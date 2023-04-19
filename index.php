@@ -11,9 +11,14 @@ Milestone 3 (BONUS)
 Invece di visualizzare la password nella index, effettuare un redirect ad una pagina dedicata che tramite $_SESSION recupererà la password da mostrare all’utente.
 */
 
+// Faccio partire la sessione
+session_start();
 
 // Importo il file functions.php
 include './partials/functions.php';
+
+$_SESSION['password'] = generateRandomPassword($pswLength);
+
 ?>
 
 <!DOCTYPE html>
@@ -33,9 +38,5 @@ include './partials/functions.php';
 
     <button type="sumbit">Genenra</button>
   </form>
-
-  <!-- Restituisco la psw -->
-  <h3>Password:</h3>
-  <pre><?php echo generateRandomPassword($pswLength) ?></pre>
 </body>
 </html>
