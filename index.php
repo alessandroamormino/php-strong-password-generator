@@ -11,7 +11,15 @@ Invece di visualizzare la password nella index, effettuare un redirect ad una pa
 */
 
 //Recupero la variabile dal form
-$pswLength = $_GET['psw-length'] ?? '';
+$pswLength = $_GET['psw-length'] ?? 0;
+
+//Creo una funzione per generare una password casuale
+function generateRandomPassword($length){
+  // Dichiaro un array con i caratteri da utilizzare
+  $characters = "1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcefghijklmnopqrstuvwxyz!#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
+  // uso la funzione str_shuffle per generare la psw con le lettere casualmente nella mia stringa e prendo solo la lunghezza che mi serve
+  return substr(str_shuffle($characters), 0, $length);
+}
 ?>
 
 <!DOCTYPE html>
@@ -27,13 +35,13 @@ $pswLength = $_GET['psw-length'] ?? '';
   <!-- Form -->
   <form action="index.php" method="GET">
     <label for="psw-length">Indica la lunghezza della password</label>
-    <input type="number" min="4" steps="1" name="psw-length" id="psw-length" required>
+    <input type="number" min="8" steps="1" name="psw-length" id="psw-length" required>
 
     <button type="sumbit">Genenra</button>
   </form>
 
   <!-- Restituisco la psw -->
   <h3>Password:</h3>
-  <pre><?php echo $pswLength; ?></pre>
+  <pre><?php echo generateRandomPassword($pswLength) ?></pre>
 </body>
 </html>
