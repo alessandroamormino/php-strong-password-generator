@@ -11,16 +11,9 @@ Milestone 3 (BONUS)
 Invece di visualizzare la password nella index, effettuare un redirect ad una pagina dedicata che tramite $_SESSION recupererà la password da mostrare all’utente.
 */
 
-//Recupero la variabile dal form
-$pswLength = $_GET['psw-length'] ?? 0;
 
-//Creo una funzione per generare una password casuale
-function generateRandomPassword($length){
-  // Dichiaro un array con i caratteri da utilizzare
-  $characters = "1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcefghijklmnopqrstuvwxyz!#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
-  // uso la funzione str_shuffle per generare la psw con le lettere casualmente nella mia stringa e prendo solo la lunghezza che mi serve
-  return substr(str_shuffle($characters), 0, $length);
-}
+// Importo il file functions.php
+include './partials/functions.php';
 ?>
 
 <!DOCTYPE html>
