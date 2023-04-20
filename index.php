@@ -15,7 +15,7 @@ Invece di visualizzare la password nella index, effettuare un redirect ad una pa
 session_start();
 
 // Importo il file functions.php
-require_once './partials/functions.php';
+require_once __DIR__ . '/partials/functions.php';
 
 $_SESSION['password'] = generateRandomPassword($pswLength);
 
